@@ -36,7 +36,6 @@ def score(dice)
   end
   set_in = {}
   dice.uniq.each {|v| set_in[v]=dice.count(v)}
- p set_in
  @score = 0
   set_in.each do |face_value, count|
      if face_value==1 

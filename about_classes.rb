@@ -29,11 +29,11 @@ class AboutClasses < Neo::Koan
     fido = Dog2.new
     fido.set_name("Fido")
 
-    assert_raise(AboutClasses::NoMethodError) do
+    assert_raise(NoMethodError) do
       fido.name
     end
 
-    assert_raise(AboutClasses::SyntaxError) do
+    assert_raise(SyntaxError) do
       eval "fido.@name"
       # NOTE: Using eval because the above line is a syntax error.
     end
@@ -119,7 +119,7 @@ class AboutClasses < Neo::Koan
   end
 
   def test_args_to_new_must_match_initialize
-    assert_raise(AboutClasses::ArgumentError) do
+    assert_raise(ArgumentError) do
       Dog6.new
     end
     # THINK ABOUT IT:
