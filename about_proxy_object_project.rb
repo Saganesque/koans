@@ -20,24 +20,23 @@ class Proxy
     @messages = []
   end
   def method_missing(idx, *args)
-      #@object.id(*args)
- puts "There is no #{idx} method" 
-  if idx == :messages then
-    @messages
-  elsif idx == :called? then
-  @messages.include?(*args) ? true : false
-  elsif @object.respond_to?(idx) then
-    @messages << idx
-  @object.send(idx,*args)
-  elsif idx == :number_of_times_called
-  @messages.count(*args)
-else
- raise NoMethodError 
-  end
-
-  end
   # WRITE CODE HERE
-
+  
+  case
+    when  idx == :messages 
+       @messages
+    when  idx == :called?  
+       @messages.include?(*args) ? true : false
+    when @object.respond_to?(idx) 
+       @messages << idx
+       @object.send(idx,*args)
+    when idx == :number_of_times_called
+       @messages.count(*args)
+    else
+       raise NoMethodError 
+  end
+  
+  end
 end
 # The proxy object should pass the following Koan:
 #
